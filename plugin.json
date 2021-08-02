@@ -1,0 +1,57 @@
+{
+  "type": "datasource",
+  "name": "Intercloud datasource",
+  "id": "intercloud-grafana-datasource",
+  "metrics": true,
+  "info": {
+    "description": "Datasource plugin for InterCloud's services metrics",
+    "author": {
+      "name": "Nicolas DEVOIR",
+      "url": "https://www.intercloud.com"
+    },
+    "keywords": ["intercloud", "datasource", "grafana", "plugin", "metrics", "kpis", "data"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {
+        "name": "Website",
+        "url": "https://github.com/intercloud/intercloud-grafana-plugin"
+      },
+      {
+        "name": "License",
+        "url": "https://github.com/intercloud/intercloud-grafana-plugin/blob/master/LICENSE"
+      }
+    ],
+    "screenshots": [],
+    "version": "1.0.0",
+    "updated": "2021-08-02"
+  },
+  "dependencies": {
+    "grafanaVersion": "7.4.x",
+    "plugins": []
+  },
+  "routes": [
+    {
+      "path": "health/metrics",
+      "url": "https://api-console.intercloud.io/health/metrics",
+      "headers": [
+        {
+          "name": "Authorization",
+          "content": "Bearer {{ .SecureJsonData.apiKey }}"
+        }
+      ]
+    },
+    {
+      "path": "metrics/query/irn",
+      "url": "https://api-console.intercloud.io/metrics/query/irn",
+      "headers": [
+        {
+          "name": "Authorization",
+          "content": "Bearer {{ .SecureJsonData.apiKey }}"
+        }
+      ]
+    }
+  ]
+}
